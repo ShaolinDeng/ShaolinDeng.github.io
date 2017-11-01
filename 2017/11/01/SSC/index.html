@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Shaolin&#39;s blog</title>
+  <title>SSC简介 | Shaolin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="总结工作与学习中的技术，不断归纳、提升">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Shaolin&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="SSC 介绍SSC （Spread Spectrum Clocking)SSC技术是目前最经济最有效地降低EMI的解决方案 。 所有会产生频率信号的电子组件都是潜在的电磁干扰（ EMI ）源,这些信号将会影响如收音机、电视或者移动电话等电子产品的正常运作。 固定周期的信号为EMI放射的主要原因。 SSC 分类down spread  center spread 实际工作中遇到的SSC6M60 SS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSC简介">
+<meta property="og:url" content="http://yoursite.com/2017/11/01/SSC/index.html">
 <meta property="og:site_name" content="Shaolin&#39;s blog">
-<meta property="og:description" content="总结工作与学习中的技术，不断归纳、提升">
+<meta property="og:description" content="SSC 介绍SSC （Spread Spectrum Clocking)SSC技术是目前最经济最有效地降低EMI的解决方案 。 所有会产生频率信号的电子组件都是潜在的电磁干扰（ EMI ）源,这些信号将会影响如收音机、电视或者移动电话等电子产品的正常运作。 固定周期的信号为EMI放射的主要原因。 SSC 分类down spread  center spread 实际工作中遇到的SSC6M60 SS">
+<meta property="og:updated_time" content="2017-11-01T08:59:03.945Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shaolin&#39;s blog">
-<meta name="twitter:description" content="总结工作与学习中的技术，不断归纳、提升">
+<meta name="twitter:title" content="SSC简介">
+<meta name="twitter:description" content="SSC 介绍SSC （Spread Spectrum Clocking)SSC技术是目前最经济最有效地降低EMI的解决方案 。 所有会产生频率信号的电子组件都是潜在的电磁干扰（ EMI ）源,这些信号将会影响如收音机、电视或者移动电话等电子产品的正常运作。 固定周期的信号为EMI放射的主要原因。 SSC 分类down spread  center spread 实际工作中遇到的SSC6M60 SS">
   
     <link rel="alternate" href="/atom.xml" title="Shaolin&#39;s blog" type="application/atom+xml">
   
@@ -70,9 +71,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-SSC" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-SSC" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/01/SSC/" class="article-date">
   <time datetime="2017-11-01T07:46:53.000Z" itemprop="datePublished">2017-11-01</time>
@@ -85,8 +84,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/01/SSC/">SSC简介</a>
+    <h1 class="article-title" itemprop="name">
+      SSC简介
     </h1>
   
 
@@ -127,99 +126,74 @@
     </footer>
   </div>
   
-</article>
- 
-
-
-  
-    <article id="post-My-Post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/12/My-Post/" class="article-date">
-  <time datetime="2017-06-12T07:33:59.000Z" itemprop="datePublished">2017-06-12</time>
-</a>
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/12/My-Post/">My Post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        
-      
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/12/My-Post/" data-id="cj9gt483f0002ssfhln0msfra" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
   </div>
+
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/06/12/My-Post/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">My Post</div>
+    </a>
+  
+</nav>
+
   
 </article>
  
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/08/hello-world/" class="article-date">
-  <time datetime="2017-06-08T04:23:13.357Z" itemprop="datePublished">2017-06-08</time>
-</a>
+     
+  <div class="comments" id="comments">
+    
+     
+       
+       
+      
+      
+           <div id="gitment_comments"></div>
     
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/08/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/06/08/hello-world/" data-id="cj9gt483m0005ssfhwisu0uf9" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
  
-
-
   
 
 </section>
@@ -227,29 +201,20 @@
     <aside id="sidebar">
   
     
-  <div class="widget-wrap">
-     
-        <h3 class="follow-title ">Follow me</h3>
-     
-    <div class="widget follow">
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
       
-              <a class="github" aria-hidden="true" href="https://github.com/ShaolinDeng" target="_blank" title="Github"></a>
-      
-      
-            <a class="weibo" aria-hidden="true"  href="http://weibo.com/dengshaolin" target="_blank" title="微博"></a>
-      
-      
-              <a class="zhihu" aria-hidden="true"  href="https://www.zhihu.com/people/deng-shao-lin" target="_blank" title="知乎"></a>
-      
-      
-            <a class="email" aria-hidden="true"  href="mailto:dengshaolin@buaa.edu.cn" target="_blank" title="邮箱"></a>
-      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSC-介绍"><span class="toc-number">1.</span> <span class="toc-text">SSC 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSC-（Spread-Spectrum-Clocking"><span class="toc-number">1.1.</span> <span class="toc-text">SSC （Spread Spectrum Clocking)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSC-分类"><span class="toc-number">1.2.</span> <span class="toc-text">SSC 分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实际工作中遇到的SSC"><span class="toc-number">2.</span> <span class="toc-text">实际工作中遇到的SSC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6M60-SSC"><span class="toc-number">2.1.</span> <span class="toc-text">6M60 SSC</span></a></li></ol></li></ol>
+          </div>
+      </div>
     </div>
-  </div>
 
-
-  
-    
   
     
 
@@ -257,36 +222,8 @@
     
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/11/01/SSC/">SSC简介</a>
-          </li>
-        
-          <li>
-            <a href="/2017/06/12/My-Post/">My Post</a>
-          </li>
-        
-          <li>
-            <a href="/2017/06/08/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title archive">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
-
 
   
     
